@@ -18,7 +18,7 @@ private:
 	bool   verbose;
 	double xMean;
 	double yMean;
-	double ZScore[25];
+	double ZScore[MAX_POINTS];
 	double s;
 public:
 	gradient_descend();

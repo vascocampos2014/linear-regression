@@ -5,13 +5,13 @@
 using namespace std;
 
 gradient_descend::gradient_descend()
-	:m(0), b(0), alpha(DEFAULT_ALPHA), iterations(DEFAULT_ITER), verbose(false), xMean(0), yMean(0)
+	:m(0), b(0), alpha(DEFAULT_ALPHA), iterations(DEFAULT_ITER), verbose(false), xMean(0), yMean(0), s(0)
 {
 
 }
 
 gradient_descend::gradient_descend(const data_t& dataCsv)
-	:m(0), b(0), alpha(DEFAULT_ALPHA), iterations(DEFAULT_ITER), verbose(true), xMean(0), yMean(0)
+	:m(0), b(0), alpha(DEFAULT_ALPHA), iterations(DEFAULT_ITER), verbose(true), xMean(0), yMean(0), s(0)
 {
 	calculateMeans(dataCsv);
 	calculateZScore(dataCsv);
@@ -57,7 +57,6 @@ void gradient_descend::calculateZScore(const data_t& dataCsv)
 	}	
 	this->s = sqrt(x / dataCsv.count);
 	i = 0;
-	cout << "\nS: " << s << endl;
 	while (i < dataCsv.count)
 	{
 		this->ZScore[i] = (dataCsv.arrA[i] - this->xMean) / s;
